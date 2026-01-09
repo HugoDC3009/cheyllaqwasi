@@ -15,22 +15,22 @@ export default function AdminPage() {
             return;
         }
 
+        // Cambiamos 'imagen_url' por 'image_url' para que coincida con tu Supabase
         const { error } = await supabase
             .from('plantas')
             .insert([{
                 nombre,
                 precio: parseFloat(precio),
                 descripcion,
-                imagen_url: imgUrl,
+                image_url: imgUrl, // <--- CORREGIDO AQUÍ (sin la 'n')
                 stock: true
             }])
 
         if (error) {
             console.error(error);
-            alert("Error al guardar");
+            alert("Error al guardar: " + error.message);
         } else {
             alert("¡Planta guardada con éxito!");
-            // Limpiar formulario
             setNombre(''); setPrecio(''); setDescripcion(''); setImgUrl('');
         }
     }
