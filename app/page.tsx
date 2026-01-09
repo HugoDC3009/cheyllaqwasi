@@ -40,7 +40,7 @@ export default function Home() {
     <main className="min-h-screen bg-stone-50">
       {/* Hero Section / Banner */}
       <header className="bg-emerald-900 text-white py-20 px-6 text-center shadow-inner">
-        <h1 className="text-5xl md:text-7xl font-serif font-bold mb-4 italic">Chayllawasi</h1>
+        <h1 className="text-5xl md:text-7xl font-serif font-bold mb-4 italic">Cheyllawasi</h1>
         <div className="w-24 h-1 bg-emerald-400 mx-auto mb-6"></div>
         <p className="text-xl md:text-2xl opacity-90 font-light max-w-2xl mx-auto">
           Plantas ornamentales y exóticas seleccionadas con amor para transformar tu hogar.
