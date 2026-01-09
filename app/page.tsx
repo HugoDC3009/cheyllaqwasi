@@ -1,40 +1,38 @@
-import Image from 'next/image'
+'use client';
 
-// Datos de ejemplo para la Fase 1
-const plantas = [
-  {
-    id: 1,
-    nombre: "Orquídea Phalaenopsis",
-    precio: "45.00",
-    descripcion: "Elegante planta de interior, ideal para decoración y regalo.",
-    imagen: "https://images.unsplash.com/photo-1534885320221-bc0433ec3045?auto=format&fit=crop&q=80&w=500",
-  },
-  {
-    id: 2,
-    nombre: "Suculenta Echeveria",
-    precio: "12.00",
-    descripcion: "Planta de sol directo, requiere muy poco riego y cuidado.",
-    imagen: "https://images.unsplash.com/photo-1509423350716-97f9360b4e59?auto=format&fit=crop&q=80&w=500",
-  },
-  {
-    id: 3,
-    nombre: "Palmera de Salón",
-    precio: "35.00",
-    descripcion: "Excelente purificadora de aire para espacios interiores.",
-    imagen: "https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?auto=format&fit=crop&q=80&w=500",
-  },
-  {
-    id: 4,
-    nombre: "Lirio de la Paz",
-    precio: "25.00",
-    descripcion: "Resistente y hermosa, perfecta para principiantes.",
-    imagen: "https://images.unsplash.com/photo-1597055181300-e3633a207519?auto=format&fit=crop&q=80&w=500",
-  }
-];
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { supabase } from '../lib/supabase';
+
+interface Planta {
+  id: number;
+  nombre: string;
+  precio: string;
+  descripcion: string;
+  imagen: string;
+}
 
 export default function Home() {
   // REEMPLAZA ESTO: Pon el número de tu papá sin el signo + (ejemplo: 51900800700)
   const telefono = "TU_NUMERO_AQUÍ";
+
+  const [plantas, setPlantas] = useState<Planta[]>([]);
+
+  useEffect(() => {
+    const fetchPlantas = async () => {
+      const { data, error } = await supabase
+        .from('plantas')
+        .select('*');
+
+      if (error) {
+        console.error('Error cargando plantas:', error);
+      } else {
+        setPlantas(data || []);
+      }
+    };
+
+    fetchPlantas();
+  }, []);
 
   return (
     <main className="min-h-screen bg-stone-50">
