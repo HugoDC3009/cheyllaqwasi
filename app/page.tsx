@@ -109,7 +109,6 @@ export default function Home() {
           </div>
           <div className="border-t border-emerald-800 pt-8 text-xs opacity-50">
             <p>© {new Date().getFullYear()} Chayllawasi. Todos los derechos reservados.</p>
-            <p className="mt-2">Desarrollado con ❤️ para papá</p>
           </div>
         </div>
       </footer>
